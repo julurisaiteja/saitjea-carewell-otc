@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+body {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #0b1f33;
+}
+.font-display { font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+.swiss-grid {
+  background-image: linear-gradient(#e6eef5 1px, transparent 1px), linear-gradient(90deg, #e6eef5 1px, transparent 1px);
+  background-size: 8.333% 48px;
+}
+.btn-primary { background: #0b5fff; color: #fff; padding: .7rem 1.1rem; font-weight: 600; border-radius: 2px; }
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.input {
+  width: 100%;
+  border: 1px solid #d7e2ec;
+  background: #fff;
+  border-radius: 2px;
+  padding: .65rem .9rem;
+  font-size: .875rem;
+  outline: none;
+}
+.input:focus { border-color: #0b5fff; box-shadow: 0 0 0 2px rgba(11,95,255,.15); }
+.hero-film { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.hero-film img, .hero-film video, .hero-film .hero-film-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1.03);
+  animation: filmDrift 40s ease-in-out infinite alternate;
+}
+.hero-film-clinical {
+  opacity: 0.14;
+  mix-blend-mode: luminosity;
+}
+.hero-film-clinical::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.88));
+}
+@keyframes filmDrift {
+  from { transform: scale(1.02) translate3d(0,0,0); }
+  to { transform: scale(1.06) translate3d(-0.6%, 0, 0); }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise .55s ease both; }
+.animate-rise-delay { animation: rise .55s ease .1s both; }
+.animate-rise-late { animation: rise .6s ease .18s both; }
+.stagger-children > * { animation: rise .5s ease both; }
+.stagger-children > *:nth-child(2) { animation-delay: .06s; }
+.stagger-children > *:nth-child(3) { animation-delay: .12s; }
+.stagger-children > *:nth-child(4) { animation-delay: .18s; }
+.shop-chip {
+  border: 1px solid #d7e2ec;
+  background: #fff;
+  border-radius: 2px;
+  padding: .4rem .75rem;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #5a7186;
+}
+.shop-chip:hover { border-color: #0b1f33; color: #0b1f33; }
+.shop-chip[data-active="true"] {
+  background: #0b5fff;
+  border-color: #0b5fff;
+  color: #fff;
+}
+.filter-chrome {
+  border: 1px solid #d7e2ec;
+  background: #f8fafc;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise, .animate-rise-delay, .animate-rise-late, .stagger-children > *,
+  .hero-film img, .hero-film video, .hero-film .hero-film-img { animation: none; }
+}
